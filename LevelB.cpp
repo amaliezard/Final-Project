@@ -37,7 +37,6 @@ LevelB::~LevelB()
     m_game_state.lose_sfx = nullptr;
     m_game_state.boom_sfx = nullptr;
     m_game_state.bgm = nullptr;
-
 }
 
 void LevelB::initialise() {
@@ -72,25 +71,23 @@ void LevelB::initialise() {
     GLuint food_texture_id = Utility::load_texture("assets/images/jelloporter-green.png");
     
     m_game_state.enemies = new Entity[ENEMY_COUNT];
-    m_game_state.enemies[0] = Entity(enemy_texture_id, 1.2f, glm::vec3(0.0f), 0.0f, eye_sickle_animation, 0.0f, 4, 0, 4, 1, 0.3f, 0.3f, ENEMY);
+
+    for (int i = 0; i < ENEMY_COUNT; i++) {
+        m_game_state.enemies[i] = Entity( enemy_texture_id, 1.2f, glm::vec3(0.0f), 0.0f,eye_sickle_animation, 0.0f, 4, 0, 4, 1, 0.3f, 0.3f, ENEMY );
+        m_game_state.enemies[i].activate();
+    }
+
     m_game_state.enemies[0].set_position(glm::vec3(5.4f, -0.7f, 0.0f));
     m_game_state.enemies[0].set_ai_type(OSCILLATE2);
-    m_game_state.enemies[0].activate();
-    
-    m_game_state.enemies[1] = Entity(enemy_texture_id, 1.2f, glm::vec3(0.0f), 0.0f, eye_sickle_animation, 0.0f, 4, 0, 4, 1, 0.3f, 0.3f, ENEMY);
+    m_game_state.enemies[0].oscillation_timer = 0.1f;
+
     m_game_state.enemies[1].set_position(glm::vec3(2.8f, -1.7f, 0.0f));
     m_game_state.enemies[1].set_ai_type(JUMPER);
-    m_game_state.enemies[1].activate();
-    m_game_state.enemies[2] = Entity(enemy_texture_id, 1.2f, glm::vec3(0.0f), 0.0f, eye_sickle_animation, 0.0f, 4, 0, 4, 1, 0.6f, 0.6f, ENEMY);
+    m_game_state.enemies[1].oscillation_timer = 0.2f;
+
     m_game_state.enemies[2].set_position(glm::vec3(0.8f, -4.3f, 0.0f));
     m_game_state.enemies[2].set_ai_type(OSCILLATE);
-    m_game_state.enemies[2].activate();
-    
-    m_game_state.enemies[0].oscillation_timer = 0.1f; 
-    m_game_state.enemies[1].oscillation_timer = 0.2f;
     m_game_state.enemies[2].oscillation_timer = 0.3f;
-
-    
 
     m_game_state.player->set_position(glm::vec3(4.5f, -0.9f, 0.0f));
     
