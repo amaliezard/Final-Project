@@ -1,12 +1,3 @@
-/**
-* Author: Amalie
-* Assignment: Rise of the AI
-* Date due: 2024-15-9, 11:59pm
-* I pledge that I have completed this assignment without
-* collaborating with anyone else, in conformance with the
-* NYU School of Engineering Policies and Procedures on
-* Academic Misconduct.
-**/
 
 #define GL_SILENCE_DEPRECATION
 #define LOG(argument) std::cout << argument << '\n'
@@ -49,7 +40,7 @@ constexpr int VIEWPORT_X = 0,
           VIEWPORT_Y = 0,
           VIEWPORT_WIDTH  = WINDOW_WIDTH,
           VIEWPORT_HEIGHT = WINDOW_HEIGHT;
-constexpr char GAME_WINDOW_NAME[] = "Hello, Maps!";
+constexpr char GAME_WINDOW_NAME[] = "Hunger Maze";
 
 constexpr char V_SHADER_PATH[] = "shaders/vertex_textured.glsl",
            F_SHADER_PATH[] = "shaders/fragment_textured.glsl";
@@ -119,7 +110,7 @@ void initialise() {
     g_view_matrix = glm::mat4(1.0f);
     
 //    g_projection_matrix = glm::ortho(-5.0f, 5.0f, -3.75f, 3.75f, -1.0f, 1.0f);
-    float zoomFactor = 1.2f; // Higher value means more zoomed out
+    float zoomFactor = 1.2f; 
     g_projection_matrix = glm::ortho(-5.0f * zoomFactor, 5.0f * zoomFactor,
                                      -3.75f * zoomFactor, 3.75f * zoomFactor,
                                      -1.0f, 1.0f);
