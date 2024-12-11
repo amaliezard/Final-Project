@@ -88,32 +88,36 @@ void LevelA::initialise() {
     };
     
     GLuint food_texture_id = Utility::load_texture("assets/images/jelloporter-pink.png");
-
     m_game_state.enemies = new Entity[ENEMY_COUNT];
 
-    m_game_state.enemies[0] = Entity(enemy_texture_id, 1.0f, glm::vec3(0.0f), 0.0f, batpig_fly_animation, 0.0f, 3, 0, 3, 1, 0.9f, 0.9f, ENEMY);
+    for (int i = 0; i < ENEMY_COUNT; i++) {
+        m_game_state.enemies[i] = Entity(
+            enemy_texture_id, 1.0f, glm::vec3(0.0f), 0.0f,
+            batpig_fly_animation, 0.0f, 3, 0, 3, 1, 0.9f, 0.9f, ENEMY
+        );
+        m_game_state.enemies[i].activate();
+    }
+
     m_game_state.enemies[0].set_ai_type(FLYER1);
-    m_game_state.enemies[0].activate();
-    
-    m_game_state.enemies[1] = Entity(enemy_texture_id, 1.0f, glm::vec3(0.0f), 0.0f, batpig_fly_animation, 0.0f, 3, 0, 3, 1, 0.9f, 0.9f, ENEMY);
+    m_game_state.enemies[0].set_position(glm::vec3(5.0f, -1.0f, 0.0f));
+
     m_game_state.enemies[1].set_ai_type(FLYER2);
-    m_game_state.enemies[1].activate();
-   
-    m_game_state.enemies[2] = Entity(enemy_texture_id, 1.0f, glm::vec3(0.0f), 0.0f, batpig_fly_animation, 0.0f, 3, 0, 3, 1, 0.9f, 0.9f, ENEMY);
+    m_game_state.enemies[1].set_position(glm::vec3(3.0f, -1.5f, 0.0f));
+
     m_game_state.enemies[2].set_ai_type(FLYER3);
-    m_game_state.enemies[2].activate();
+    m_game_state.enemies[2].set_position(glm::vec3(2.0f, -2.0f, 0.0f)); 
+
     
     m_game_state.food = new Entity[FOOD_COUNT];
     m_game_state.food[0] = Entity(food_texture_id, 0.0f, glm::vec3(0.0f), 0.0f, nullptr, 0.0f, 0, 0, 1, 1, 0.15f, 0.15f, FOOD);
-    m_game_state.food[0].set_position(glm::vec3(4.5f, -1.0f, 0.0f));
-//    
+    m_game_state.food[0].set_position(glm::vec3(4.5f, -1.0f, 0.0f));    
 //    m_game_state.food[0].set_position(glm::vec3(9.0f, -1.0f, 0.0f));
 //    m_game_state.food[1] = Entity(food_texture_id, 0.0f, glm::vec3(0.0f), 0.0f, nullptr, 0.0f, 0, 0, 1, 1, 0.15f, 0.15f, FOOD);
 //    m_game_state.food[1].set_position(glm::vec3(3.6f, -5.4f, 0.0f));
 //    m_game_state.food[2] = Entity(food_texture_id, 0.0f, glm::vec3(0.0f), 0.0f, nullptr, 0.0f, 0, 0, 1, 1, 0.15f, 0.15f, FOOD);
 //    m_game_state.food[2].set_position(glm::vec3(9.0f, -1.0f, 0.0f));
-//
-//   
+
+   
     m_game_state.player->set_position(glm::vec3(1.0f, -1.0f, 0.0f));
     
     // ————— BLENDING ————— //
@@ -174,7 +178,7 @@ void LevelA::update(float delta_time) {
     }
 
     if (collected_food_count == FOOD_COUNT) {
-        m_game_state.next_scene_id = 3;
+        m_game_state.next_scene_id = 2;
     }
 }
 
