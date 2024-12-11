@@ -3,7 +3,7 @@
 #include <vector>
 
 #define FIXED_TIMESTEP 0.0166666f
-#define FOOD_COUNT 1
+#define FOOD_COUNT 3
 
 #define ENEMY_COUNT 3
 
@@ -111,11 +111,10 @@ void LevelA::initialise() {
     m_game_state.food = new Entity[FOOD_COUNT];
     m_game_state.food[0] = Entity(food_texture_id, 0.0f, glm::vec3(0.0f), 0.0f, nullptr, 0.0f, 0, 0, 1, 1, 0.15f, 0.15f, FOOD);
     m_game_state.food[0].set_position(glm::vec3(4.5f, -1.0f, 0.0f));    
-//    m_game_state.food[0].set_position(glm::vec3(9.0f, -1.0f, 0.0f));
-//    m_game_state.food[1] = Entity(food_texture_id, 0.0f, glm::vec3(0.0f), 0.0f, nullptr, 0.0f, 0, 0, 1, 1, 0.15f, 0.15f, FOOD);
-//    m_game_state.food[1].set_position(glm::vec3(3.6f, -5.4f, 0.0f));
-//    m_game_state.food[2] = Entity(food_texture_id, 0.0f, glm::vec3(0.0f), 0.0f, nullptr, 0.0f, 0, 0, 1, 1, 0.15f, 0.15f, FOOD);
-//    m_game_state.food[2].set_position(glm::vec3(9.0f, -1.0f, 0.0f));
+    m_game_state.food[1] = Entity(food_texture_id, 0.0f, glm::vec3(0.0f), 0.0f, nullptr, 0.0f, 0, 0, 1, 1, 0.15f, 0.15f, FOOD);
+    m_game_state.food[1].set_position(glm::vec3(3.6f, -5.4f, 0.0f));
+    m_game_state.food[2] = Entity(food_texture_id, 0.0f, glm::vec3(0.0f), 0.0f, nullptr, 0.0f, 0, 0, 1, 1, 0.15f, 0.15f, FOOD);
+    m_game_state.food[2].set_position(glm::vec3(9.0f, -1.0f, 0.0f));
 
    
     m_game_state.player->set_position(glm::vec3(1.0f, -1.0f, 0.0f));
